@@ -1,0 +1,15 @@
+@host = http://localhost:5001
+@token = replace-with-login-token
+
+### Public status
+GET {{host}}/api/auth/public-status
+
+### Login with seeded demo credentials
+POST {{host}}/api/auth/login
+Content-Type: application/json
+
+{"email":"demo@taskflow.dev","password":"Demo@1234!"}
+
+### Authenticated profile
+GET {{host}}/api/auth/me
+Authorization: Bearer {{token}}

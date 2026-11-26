@@ -1,0 +1,30 @@
+@host = http://localhost:5002
+@token = replace-with-login-token
+@taskId = replace-with-task-id
+@dueDate = 2030-01-01T12:00:00Z
+
+### List own tasks
+GET {{host}}/api/tasks
+Authorization: Bearer {{token}}
+
+### Create a task
+POST {{host}}/api/tasks
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{"title":"API smoke task","description":"Temporary","status":"Pending","dueDate":"{{dueDate}}"}
+
+### Get the created task
+GET {{host}}/api/tasks/{{taskId}}
+Authorization: Bearer {{token}}
+
+### Update the created task
+PUT {{host}}/api/tasks/{{taskId}}
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{"title":"API smoke updated","description":"Temporary","status":"InProgress","dueDate":"{{dueDate}}"}
+
+### Delete the created task
+DELETE {{host}}/api/tasks/{{taskId}}
+Authorization: Bearer {{token}}
